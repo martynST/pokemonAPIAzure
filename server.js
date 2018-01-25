@@ -1,14 +1,9 @@
-//Dependencies
-const express = require("express");
-const open = require("open");
-const path = require("path");
-const app = express();
-const port = 8080;
+var http = require('http');
 
-
-//Serve all the files in the folder as static assets
-app.use(express.static("./"));
-//Start server
-app.listen(process.env.PORT || 8080));
-
-
+http.createServer(function (req, res) {
+    
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write('<script>location.replace("index.html")</script>')
+    res.end();
+    
+}).listen(process.env.PORT || 8080);
